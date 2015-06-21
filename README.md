@@ -1,5 +1,5 @@
 # makeFFVCpackage
-Scripts to make ffbc_package
+Scripts to make ffvc_package
 
 ### Memo
 
