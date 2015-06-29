@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "Generate install.sh"
-/Users/keno/bin/ffvc_generate_install-script.sh
+/myapps/makeFFVCpackage/ffvc_generate_install-script.sh
 
 #########
 # check branch, see if which is alternatives
