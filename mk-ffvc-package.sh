@@ -1,14 +1,14 @@
 #!/bin/sh
 
 echo "Generate install.sh"
-/myapps/makeFFVCpackage/ffvc_generate_install-script.sh
+/Users/keno/MyApps/makeFFVCpackage/ffvc_generate_install-script.sh
 
 #########
 # check branch, see if which is alternatives
 
 ###
 # set base directory
-export BASEDIR=/myapps
+export BASEDIR=/Users/keno/MyApps
 
 ###
 # set Version
@@ -59,6 +59,7 @@ cd ffvc_package-$1
 mv ~/install_*.sh .
 chmod +x ./install_*.sh
 
+cp /Users/keno/MyApps/makeFFVCpackage/README .
 
 pushd $BASEDIR/CDMlib
 git archive --format=tar --prefix=CDMlib-$VER_CDM/ $VER_CDM | gzip > CDMlib-$VER_CDM.tar.gz
@@ -100,6 +101,3 @@ pushd $BASEDIR/FFVC
 git archive --format=tar --prefix=FFVC-$VER_FFV/ $VER_FFV | gzip > FFVC-$VER_FFV.tar.gz
 popd
 mv $BASEDIR/FFVC/FFVC-$VER_FFV.tar.gz .
-
-
-

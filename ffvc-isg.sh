@@ -4,7 +4,7 @@ cwd=`dirname $0`
 
 ###
 # set base directory
-BASEDIR=/myapps
+BASEDIR=/Users/keno/MyApps
 
 ###
 # taget
@@ -41,27 +41,27 @@ if [ "x${arg}" = "xintel" ]; then
 	TMP_CXX="mpicxx"
 	TMP_F90="mpif90"
 	CFLAG_BASE="-O3"
-    FFLAG_BASE="-O3"
-    CFLAG_APPS="-O3 -openmp -qopt-report=5"
-    FFLAG_APPS="-O3 -Warn unused -fpp -openmp -qopt-report=5"
+  FFLAG_BASE="-O3"
+  CFLAG_APPS="-O3 -openmp -qopt-report=5"
+  FFLAG_APPS="-O3 -Warn unused -fpp -openmp -qopt-report=5"
 elif [ "x${arg}" = "xgnu" ]; then
 	ARCH="GNU"
 	TMP_CCC="mpicc"
 	TMP_CXX="mpicxx"
 	TMP_F90="mpif90"
 	CFLAG_BASE="-O3"
-    FFLAG_BASE="-O3"
-    CFLAG_APPS="-O3 -fopenmp"
-    FFLAG_APPS="-O3 -cpp -fopenmp -ffree-form --free-line-length-none"
+  FFLAG_BASE="-O3"
+  CFLAG_APPS="-O3 -fopenmp"
+  FFLAG_APPS="-O3 -cpp -fopenmp -ffree-form --free-line-length-none"
 elif [ "x${arg}" = "xfx" ]; then
 	ARCH="FJ"
 	TMP_CCC="mpifccpx"
 	TMP_CXX="mpiFCCpx"
 	TMP_F90="mpifrtpx"
 	CFLAG_BASE="-Kfast,ocl,preex,simd=2,uxsimd,array_private,parallel,openmp,optmsg=2 -V -Nsrc -x0"
-    FFLAG_BASE="-Kfast,ocl,preex,simd=2,uxsimd,array_private,parallel,openmp,optmsg=2 -V -Nsrc"
-    CFLAG_APPS="$CFLAG_BASE"
-    FFLAG_APPS="$FFLAG_BASE"
+  FFLAG_BASE="-Kfast,ocl,preex,simd=2,uxsimd,array_private,parallel,openmp,optmsg=2 -V -Nsrc"
+  CFLAG_APPS="$CFLAG_BASE"
+  FFLAG_APPS="$FFLAG_BASE"
 fi
 
 ###
@@ -86,7 +86,7 @@ cd $BASEDIR/CDMlib
 VER_CO=`git describe --tags`
 
 cd $BASEDIR/FFVC
-VER_FV=`git describe --tags` 
+VER_FV=`git describe --tags`
 
 cd $cwd
 
@@ -114,7 +114,7 @@ cat $1 | awk -v ht="$OPT_HOST" \
 BEGIN {
 }
 
-NR == 5 {  
+NR == 5 {
 	sub("TEMPLATE","");
 }
 
@@ -132,13 +132,12 @@ NR == 5 {
 	sub("@TMP_CXX@",cpp_cmp);
 	sub("@TMP_F90@",f90_cmp);
 	sub("@CFLAG_BASE@",cflag_base);
-    sub("@FFLAG_BASE@",fflag_base);
-    sub("@CFLAG_APPS@",cflag_apps);
-    sub("@FFLAG_APPS@",fflag_apps);
+  sub("@FFLAG_BASE@",fflag_base);
+  sub("@CFLAG_APPS@",cflag_apps);
+  sub("@FFLAG_APPS@",fflag_apps);
 	print;
-} 
+}
 
 END {
 }
 '
-

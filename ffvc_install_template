@@ -30,7 +30,8 @@ fi
 #######################################
 # Edit MACRO for your target machine
 
-#export FFV_HOME=hogehoge
+export FFV_HOME=
+export TMP_LDFLAGS=
 
 export TMP_CCC=@TMP_CCC@
 export TMP_CXX=@TMP_CXX@
@@ -57,8 +58,10 @@ echo
 if [ ! -d ${TP_LIB} ]; then
   tar xvzf ${TP_LIB}.tar.gz
 fi
+autoreconf -i
 cd ${TP_LIB}/BUILD_DIR
 ../configure --prefix=${FFV_HOME}/TextParser \
+             --with-comp=@ARCH@ \
              CXX=$TMP_CXX \
              CXXFLAGS="@CFLAG_BASE@" @OPT_HOST@
 make
@@ -80,8 +83,10 @@ echo
 if [ ! -d ${PM_LIB} ]; then
   tar xvzf ${PM_LIB}.tar.gz
 fi
+autoreconf -i
 cd ${PM_LIB}/BUILD_DIR
 ../configure --prefix=${FFV_HOME}/PMlib \
+             --with-comp=@ARCH@ \
              CXX=$TMP_CXX \
              CXXFLAGS="@CFLAG_BASE@" @OPT_HOST@ \
              CC=$TMP_CCC \
@@ -105,6 +110,7 @@ echo
 if [ ! -d ${PLY_LIB} ]; then
   tar xvzf ${PLY_LIB}.tar.gz
 fi
+autoreconf -i
 cd ${PLY_LIB}/BUILD_DIR
 ../configure --prefix=${FFV_HOME}/Polylib \
              --with-parser=${FFV_HOME}/TextParser \
@@ -131,6 +137,7 @@ echo
 if [ ! -d ${CPM_LIB} ]; then
   tar xvzf ${CPM_LIB}.tar.gz
 fi
+autoreconf -i
 cd ${CPM_LIB}/BUILD_DIR
 ../configure --prefix=${FFV_HOME}/CPMlib \
              --with-pm=${FFV_HOME}/PMlib \
@@ -141,9 +148,9 @@ cd ${CPM_LIB}/BUILD_DIR
              --with-f90real=$PRCSN2 \
              CXX=$TMP_CXX \
              CXXFLAGS="@CFLAG_BASE@" \
-             FC=$TMP_F90 \
              F90=$TMP_F90 \
-             F90FLAGS="@FFLAG_BASE@" @OPT_HOST@
+             F90FLAGS="@FFLAG_BASE@" @OPT_HOST@ \
+             LDFLAGS=$TMP_LDFLAGS
 make
 if [ $? -ne 0 ]; then
   echo "make error!"
@@ -163,6 +170,7 @@ echo
 if [ ! -d ${CDM_LIB} ]; then
   tar xvzf ${CDM_LIB}.tar.gz
 fi
+autoreconf -i
 cd ${CDM_LIB}/BUILD_DIR
 ../configure --prefix=${FFV_HOME}/CDMlib \
              --with-parser=${FFV_HOME}/TextParser \
@@ -189,6 +197,7 @@ echo
 if [ ! -d ${FFVC} ]; then
   tar xvzf ${FFVC}.tar.gz
 fi
+autoreconf -i
 cd ${FFVC}/BUILD_DIR
 ../configure --prefix=${FFV_HOME}/FFVC \
              --with-cpm=${FFV_HOME}/CPMlib \
@@ -203,7 +212,8 @@ cd ${FFVC}/BUILD_DIR
              CXX=$TMP_CXX \
              CXXFLAGS="@CFLAG_APPS@" \
              F90FLAGS="@FFLAG_APPS@" \
-             F90=$TMP_F90 @OPT_HOST@
+             F90=$TMP_F90 @OPT_HOST@ \
+             LDFLAGS=$TMP_LDFLAGS
 make
 if [ $? -ne 0 ]; then
   echo "make error!"
@@ -211,4 +221,3 @@ if [ $? -ne 0 ]; then
 fi
 make install
 cd ../..
-

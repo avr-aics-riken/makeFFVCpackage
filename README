@@ -1,0 +1,47 @@
+/*
+ * FFV-C
+ * Frontflow / violet Cartesian
+ *
+ *
+ * Copyright (c) 2007-2011 VCAD System Research Program, RIKEN.
+ * All rights reserved.
+ *
+ * Copyright (c) 2011-2015 Institute of Industrial Science, The University of Tokyo.
+ * All rights reserved.
+ *
+ * Copyright (c) 2012-2015 Advanced Institute for Computational Science, RIKEN.
+ * All rights reserved.
+ *
+ */
+
+
+
+How to install FFV-C package
+============================
+
+1) Choose an applicable install script.
+
+  install_intel.sh  <=  Intel compiler
+  install_gnu.sh    <=  GNU compiler
+  install_fx.sh     <=  FUJITSU compiler
+
+
+2) Edit build parameters.
+
+  FFV_HOME = Install directory
+  TMP_LDFLAGS = Directory path for fortran libraries
+
+In case of the GNU compiler, you may need to specify TMP_LDFLAGS, that includes
+fortran library.
+
+
+3) Type a command.
+
+# single precision
+$ ./install_*.sh
+
+# double precision
+$ ./install_*.sh double
+
+
+The executable modules are installed at the specified directory.
