@@ -28,7 +28,7 @@ How to install FFV-C package
 
 2) Edit build parameters.
 
-  FFV_HOME = Install directory
+  FFV_HOME = Install directory, default directory is ~/FFV
   TMP_LDFLAGS = Directory path for fortran libraries
 
 In case of the GNU compiler, you may need to specify TMP_LDFLAGS, that includes

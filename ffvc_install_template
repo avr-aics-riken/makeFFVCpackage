@@ -30,7 +30,7 @@ fi
 #######################################
 # Edit MACRO for your target machine
 
-export FFV_HOME=
+export FFV_HOME=~/FFV
 export TMP_LDFLAGS=
 
 export TMP_CCC=@TMP_CCC@
