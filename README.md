@@ -1,16 +1,42 @@
-# makeFFVCpackage
-Scripts to make ffvc_package
+# ffvc_package
 
-### Memo
+Release package of FFV-C and related libraries.
 
-- ffvc_install_templateがひな形  
 
-`$ ffvc-isg.sh ffvc_install_template intel|gnu|fx`
+## Install
+1) edit environment variables
+  
+FFV_HOME = Install directory, default directory is ~/FFV
+TMP_LDFLAGS = Directory path for fortran libraries
 
-`$ ./ffvc-isg.sh` でないことに注意！
+In case of the GNU compiler, you may need to specify TMP_LDFLAGS, that includes
+fortran library.
 
-- 上記の自動化  
-`$ ./ffvc_generate_install-script.sh`
 
-- 上記の全ての自動化（例えば，version 1.6.2の作成）  
-`$ mk-ffvc-package.sh 1.6.2`
+
+2) Type install shell script. For example, install_intel.sh for Intel platform.
+  $ ./install_intel.sh
+
+
+
+3) If you want to compile with double precision, please invoke install shell with 'double' option.
+  $ ./install_intel.sh double
+
+
+
+## Supported platforms and compilers
+	install_intel.sh; Intel arch. and Intel compiler
+	install_gnu.sh;   Intel arch. and gnu compiler
+	install_fx.sh;    Sparc fx arch. and Fujitsu compiler
+
+
+
+## Note
+
+### 2.0.8 `2015-02-01`
+- new algorithm for a geometry process
+- 9 bits expression for cut length
+- expire exploiting cutlib
+
+### 1.8.5 `2014-09-16`
+- Implement central scheme 2nd & 4th 
