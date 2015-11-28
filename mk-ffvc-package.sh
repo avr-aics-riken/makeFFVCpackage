@@ -59,8 +59,6 @@ cd ffvc_package-$1
 mv ~/install_*.sh .
 chmod +x ./install_*.sh
 
-cp /Users/keno/MyApps/makeFFVCpackage/README .
-
 pushd $BASEDIR/CDMlib
 git archive --format=tar --prefix=CDMlib-$VER_CDM/ $VER_CDM | gzip > CDMlib-$VER_CDM.tar.gz
 popd
